@@ -16,7 +16,8 @@
     "type-check": "tsc --pretty",
     "prepare": "husky",
     "precommit": "npm run type-check && npm run fix",
-    "test": "vitest"
+    "test": "vitest",
+    "generate": "plop"
   },
   "dependencies": {
     "next": "14.1.4",
@@ -36,6 +37,7 @@
     "husky": "^9.0.11",
     "jsdom": "^24.0.0",
     "npm-run-all": "^4.1.5",
+    "plop": "^4.0.1",
     "postcss": "^8",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.13",
