@@ -1,0 +1,10 @@
+import { describe, expect, test } from "vitest";
+import { render } from "@testing-library/react";
+import { App, {{nextProperCase name}} } from "@/src/pages";
+
+describe("{{nextProperCase name}}", () => {
+  test("renders a heading", () => {
+    const { container, getByText } = render(<App Component={ {{~nextProperCase name~}} } />);
+    expect(getByText("Hello World")).toBeInTheDocument();
+  });
+});

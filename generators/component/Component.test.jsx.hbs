@@ -1,0 +1,12 @@
+import { describe, expect, test } from "vitest";
+import { render } from "@testing-library/react";
+import { {{nextProperCase name}} } from "@/src/components";
+
+describe("{{nextProperCase name}}", () => {
+  test("renders a {{nextProperCase name}} component", () => {
+    const { container, getByText } = render(<{{nextProperCase name}}>Hello world!</{{nextProperCase name}}>);
+
+    expect(getByText("Hello world!")).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+});

@@ -1,0 +1,16 @@
+import type { NextPage } from "next";
+import Head from "next/head";
+import { Button } from "@/src/components";
+
+export const {{nextProperCase name}}: NextPage = () => {
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+      <Head>
+        <title>{{nextProperCase name}}</title>
+      </Head>
+      <Button>Click me</Button>
+    </div>
+  );
+};
+
+export default {{nextProperCase name}};
