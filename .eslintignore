@@ -6,3 +6,4 @@ build/
 dist/
 node_modules/
 public/
+src/lib/types/generated/*.ts
