@@ -47,7 +47,8 @@ npm run lint
 And to auto-fix:
 
 ```shell
-npm run
+npm run fix
+```
 
 ## Code generation
 
@@ -67,4 +68,18 @@ npm run generate page BlogDetail blog/[id]
 
 ```shell
 npm run generate util isNumeric
+```
+
+### Generate WP Graphql Types
+
+This command will fetch content types from your `NEXT_PUBLIC_WORDPRESS_GRAPHQL_URL` listed in the `.env.local` file and generate types for them.
+
+*This command will only work if you have a running WordPress instance with the WPGraphQL plugin installed and have enabled public introspection.*
+
+**Enable GraphQL Introspection**
+
+In the WordPress admin sidebar of your environment, head to GraphQL > Settings. Make sure the Enable Public Introspection option is checked. 
+
+```shell
+npm run codegen:wp
 ```
