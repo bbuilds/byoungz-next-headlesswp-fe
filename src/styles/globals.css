@@ -1,3 +1,7 @@
+@import url("@fontsource/noto-sans");
+@import url("@fontsource/grenze/400.css");
+@import url("@fontsource/grenze/700.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
