@@ -31,7 +31,7 @@ module.exports = {
     },
     {
       type: "add",
-      path: "src/components/{{nextPathCase route}}.test.jsx",
+      path: "src/components/{{properCase name}}/{{properCase name}}.test.jsx",
       templateFile: "generators/component/Component.test.jsx.hbs",
     },
   ],
