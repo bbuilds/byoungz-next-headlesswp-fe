@@ -7,6 +7,5 @@ describe("{{nextProperCase name}}", () => {
     const { container, getByText } = render(<{{nextProperCase name}}>Hello world!</{{nextProperCase name}}>);
 
     expect(getByText("Hello world!")).toBeInTheDocument();
-    expect(container).toMatchSnapshot();
   });
 });
