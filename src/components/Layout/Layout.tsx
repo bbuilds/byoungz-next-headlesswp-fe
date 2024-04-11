@@ -1,6 +1,6 @@
 import * as React from "react";
-import type { Menu } from "@/lib/types";
-import { SiteHeader } from "@/components";
+import type { Menu } from "@/src/lib/types";
+import { SiteHeader } from "@/src/components";
 
 export type LayoutProps = {
   globalNavigation: Menu;

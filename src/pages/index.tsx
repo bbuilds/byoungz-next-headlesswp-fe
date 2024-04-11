@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
-import getMenuBySlug from "@/lib/queries/getMenuBySlug";
-import type { Menu } from "@/lib/types";
-import { Layout } from "@/components";
+import getMenuBySlug from "@/src/lib/queries/getMenuBySlug";
+import type { Menu } from "@/src/lib/types";
+import { Layout } from "@/src/components";
 
 interface HomeProps {
   globalNavigation: Menu;

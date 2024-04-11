@@ -1,5 +1,5 @@
-import { fetchGraphQL } from "@/lib/api";
-import { Menu } from "@/lib/types";
+import { fetchGraphQL } from "@/src/lib/api";
+import { Menu } from "@/src/lib/types";
 
 /**
  * Fetch a menu by slug.

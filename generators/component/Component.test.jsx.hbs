@@ -6,6 +6,6 @@ describe("{{nextProperCase name}}", () => {
   test("renders a {{nextProperCase name}} component", () => {
     const { container, getByText } = render(<{{nextProperCase name}}>Hello world!</{{nextProperCase name}}>);
 
-    expect(getByText("Hello world!")).toBeInTheDocument();
+    expect(getByText("Hello world!")).toBeTruthy();
   });
 });

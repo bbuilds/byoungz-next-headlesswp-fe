@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { Menu } from "@/lib/types";
+import { Menu } from "@/src/lib/types";
 import LogoHand from "@/images/logo-hand.svg";
 import LogoText from "@/images/logo-text.svg";
 

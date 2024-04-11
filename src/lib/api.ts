@@ -1,4 +1,4 @@
-import { GraphQLResponse } from "@/lib/types";
+import { GraphQLResponse } from "@/src/lib/types";
 
 /**
  * Function to execute a GraphQL query.
