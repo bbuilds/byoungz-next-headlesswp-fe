@@ -11,7 +11,7 @@ export function Layout({ globalNavigation, children }: LayoutProps) {
   return (
     <div data-component="Layout">
       <SiteHeader globalNavigation={globalNavigation} />
-      {children}
+      <main>{children}</main>
     </div>
   );
 }

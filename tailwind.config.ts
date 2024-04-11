@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 
 const colors = {
   white: "#EBF7F9", //white text and bg
-  black: "#33132", //black text and bg
+  black: "#1A1D1E", //black text and bg
   burntOrange: "#F89938",
   teal: "69C8C7",
   swampGreen: "#CCCC64",
