@@ -1,8 +1,9 @@
 import * as React from "react";
 import Link from "next/link";
-import { Menu } from "@/src/lib/types";
+import { Menu, MenuItem } from "@/src/lib/types";
 import LogoHand from "@/images/logo-hand.svg";
 import LogoText from "@/images/logo-text.svg";
+import { GlobalMenuItem } from "@/src/components";
 
 export type SiteHeaderProps = {
   globalNavigation: Menu;
@@ -10,21 +11,28 @@ export type SiteHeaderProps = {
 
 export function SiteHeader({ globalNavigation }: SiteHeaderProps) {
   const menuItems = globalNavigation.menuItems?.edges;
-  console.log("menuItems", menuItems);
 
   return (
-    <header id="site-header" data-component="SiteHeader">
+    <header
+      id="site-header"
+      data-component="SiteHeader"
+      className="relative border-b border-b-grey-300 px-[2vw] dark:border-b-grey-600 print:hidden"
+    >
       <nav>
-        <ul>
+        <ul className="flex h-12 items-center gap-x-3">
           <li>
-            <Link href="/" className="flex items-center pr-2">
+            <Link href="/" className="flex items-center">
               <span className="sr-only">
                 Link to homepage of BYOUNGZ Digital Nomad
               </span>
-              <LogoHand className="mr-2 h-auto w-6 fill-black md:w-8 dark:fill-swampGreen" />
-              <LogoText className="h-12 w-auto fill-black dark:fill-swampGreen" />
+              <LogoText className="h-8 w-auto fill-offBlack dark:fill-swampGreen" />
             </Link>
           </li>
+          {menuItems?.map((menuItem, index) => (
+            <li key={index}>
+              <GlobalMenuItem menuItem={menuItem.node as MenuItem} />
+            </li>
+          ))}
         </ul>
       </nav>
     </header>

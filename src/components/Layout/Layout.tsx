@@ -9,7 +9,10 @@ export type LayoutProps = {
 
 export function Layout({ globalNavigation, children }: LayoutProps) {
   return (
-    <div data-component="Layout">
+    <div
+      data-component="Layout"
+      className="flex min-h-screen flex-col antialiased"
+    >
       <SiteHeader globalNavigation={globalNavigation} />
       <main>{children}</main>
     </div>
