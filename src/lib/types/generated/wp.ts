@@ -3091,6 +3091,8 @@ export type MenuItem = DatabaseIdentifier & Node & {
   linkRelationship?: Maybe<Scalars['String']['output']>;
   /** The locations the menu item&#039;s Menu is assigned to */
   locations?: Maybe<Array<Maybe<MenuLocationEnum>>>;
+  /** Added to the GraphQL Schema because the ACF Field Group &quot;Main Menu Fields&quot; was set to Show in GraphQL. */
+  mainMenuIcon?: Maybe<MenuItem_Mainmenuicon>;
   /** The Menu a MenuItem is part of */
   menu?: Maybe<MenuItemToMenuConnectionEdge>;
   /**
@@ -3260,6 +3262,14 @@ export type MenuItemToMenuItemLinkableConnectionEdge = Edge & MenuItemLinkableCo
   cursor?: Maybe<Scalars['String']['output']>;
   /** The node of the connection, without the edges */
   node: MenuItemLinkable;
+};
+
+/** Field Group */
+export type MenuItem_Mainmenuicon = AcfFieldGroup & {
+  __typename?: 'MenuItem_Mainmenuicon';
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  menuIcon?: Maybe<Scalars['String']['output']>;
 };
 
 /** Registered menu locations */

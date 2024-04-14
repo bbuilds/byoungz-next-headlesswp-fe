@@ -29,5 +29,10 @@ module.exports = {
       path: "src/components/{{properCase name}}/{{properCase name}}.tsx",
       templateFile: "generators/component/Component.tsx.hbs",
     },
+    {
+      type: "add",
+      path: "src/components/{{properCase name}}/{{properCase name}}.test.jsx",
+      templateFile: "generators/component/Component.test.jsx.hbs",
+    },
   ],
 };

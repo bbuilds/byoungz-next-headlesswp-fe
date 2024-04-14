@@ -2,11 +2,14 @@ import type { Config } from "tailwindcss";
 
 const colors = {
   white: "#EBF7F9", //white text and bg
-  black: "#33132", //black text and bg
+  offBlack: "#1A1D1E", //black text and bg
+  black: "#000000",
   burntOrange: "#F89938",
-  teal: "69C8C7",
+  teal: "#69C8C7",
   swampGreen: "#CCCC64",
+  verdunGreen: "#50501B", //white theme link color
   foamGreen: "#99CC99",
+  transparent: "transparent",
   grey: {
     100: "#f8fafc",
     200: "#f1f5f8",
