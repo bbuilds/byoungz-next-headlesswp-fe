@@ -2,6 +2,14 @@
 
 Repository for [byoungz.com](https://byoungz.com/) front-end. This repo is currently a work in progress. 
 
+## Supported Features
+
+- Automatic GraphQL code generation
+- Light/Dark mode
+- Built in A11y checks
+- Code generators for utils, pages, components
+- Vitest unit testing
+
 ## Getting Started
 
 ### 1. Clone the repo
