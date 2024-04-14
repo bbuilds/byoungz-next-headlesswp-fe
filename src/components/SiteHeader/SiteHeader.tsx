@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Menu, MenuItem } from "@/src/lib/types";
 import LogoHand from "@/images/logo-hand.svg";
 import LogoText from "@/images/logo-text.svg";
-import { GlobalMenuItem } from "@/src/components";
+import { GlobalMenuItem, SearchForm } from "@/src/components";
 
 export type SiteHeaderProps = {
   globalNavigation: Menu;
@@ -16,7 +16,7 @@ export function SiteHeader({ globalNavigation }: SiteHeaderProps) {
     <header
       id="site-header"
       data-component="SiteHeader"
-      className="relative border-b border-b-grey-300 px-[2vw] dark:border-b-grey-600 print:hidden"
+      className="relative flex items-center justify-between border-b border-b-grey-300 px-[2vw] dark:border-b-grey-600 print:hidden"
     >
       <nav>
         <ul className="flex h-12 items-center gap-x-3">
@@ -35,6 +35,9 @@ export function SiteHeader({ globalNavigation }: SiteHeaderProps) {
           ))}
         </ul>
       </nav>
+      <div>
+        <SearchForm />
+      </div>
     </header>
   );
 }

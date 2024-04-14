@@ -9,6 +9,7 @@ const colors = {
   swampGreen: "#CCCC64",
   verdunGreen: "#50501B", //white theme link color
   foamGreen: "#99CC99",
+  transparent: "transparent",
   grey: {
     100: "#f8fafc",
     200: "#f1f5f8",
