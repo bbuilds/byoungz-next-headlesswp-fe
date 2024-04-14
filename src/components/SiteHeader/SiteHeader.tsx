@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Menu, MenuItem } from "@/src/lib/types";
 import LogoHand from "@/images/logo-hand.svg";
 import LogoText from "@/images/logo-text.svg";
-import { GlobalMenuItem, SearchForm } from "@/src/components";
+import { GlobalMenuItem, SearchForm, ColorModeToggle } from "@/src/components";
 
 export type SiteHeaderProps = {
   globalNavigation: Menu;
@@ -35,7 +35,8 @@ export function SiteHeader({ globalNavigation }: SiteHeaderProps) {
           ))}
         </ul>
       </nav>
-      <div>
+      <div className="flex items-center">
+        <ColorModeToggle />
         <SearchForm />
       </div>
     </header>
