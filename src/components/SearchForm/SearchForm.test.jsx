@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { render, fireEvent } from "@testing-library/react";
 import { SearchForm } from "@/src/components";
+import { axe } from "vitest-axe";
 
 describe("SearchForm", () => {
   test("renders a SearchForm component", () => {
@@ -20,5 +21,9 @@ describe("SearchForm", () => {
     fireEvent.change(inputElement, { target: { value: "digital nomad" } });
 
     expect(inputElement.value).toBe("digital nomad");
+  });
+  test("is accessible", async () => {
+    const { container } = render(<SearchForm />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });
