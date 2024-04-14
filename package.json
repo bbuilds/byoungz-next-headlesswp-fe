@@ -32,6 +32,7 @@
     "tailwindcss-fluid-type": "^2.0.6"
   },
   "devDependencies": {
+    "@axe-core/react": "^4.9.0",
     "@graphql-codegen/cli": "5.0.2",
     "@graphql-codegen/typescript": "^4.0.6",
     "@svgr/webpack": "^8.1.0",
