@@ -8,9 +8,13 @@ import UfoIcon from "@/images/ufo.svg";
 
 export type GlobalMenuItemProps = {
   menuItem: MenuItem;
+  tabIndex?: number;
 };
 
-export function GlobalMenuItem({ menuItem }: GlobalMenuItemProps) {
+export function GlobalMenuItem({
+  menuItem,
+  tabIndex = 0,
+}: GlobalMenuItemProps) {
   const SvgIcon = (icon: string) => {
     switch (icon) {
       case "globe":
@@ -30,10 +34,11 @@ export function GlobalMenuItem({ menuItem }: GlobalMenuItemProps) {
     <Link
       data-component="GlobalMenuItem"
       href={menuItem.uri}
-      className="flex h-12 items-center px-3 pr-2 text-offBlack transition-colors duration-200 hover:text-verdunGreen dark:text-white dark:hover:bg-black dark:hover:text-burntOrange"
+      className="flex h-16 items-center px-3 pr-2 text-offBlack transition-colors duration-200 hover:text-verdunGreen dark:text-white dark:hover:bg-black dark:hover:text-burntOrange lg:h-12"
+      tabIndex={tabIndex}
     >
       {SvgIcon(menuItem.mainMenuIcon?.menuIcon || "")}
-      <span className="capitalize text-base">{menuItem.label}</span>
+      <span className="capitalize text-xl lg:text-base">{menuItem.label}</span>
     </Link>
   ) : null;
 }

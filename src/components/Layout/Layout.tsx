@@ -1,6 +1,6 @@
 import * as React from "react";
 import type { Menu } from "@/src/lib/types";
-import { SiteHeader } from "@/src/components";
+import { SiteHeader, MobileNavigation } from "@/src/components";
 
 export type LayoutProps = {
   globalNavigation: Menu;
@@ -13,8 +13,9 @@ export function Layout({ globalNavigation, children }: LayoutProps) {
       data-component="Layout"
       className="flex min-h-screen flex-col antialiased"
     >
+      <MobileNavigation globalNavigation={globalNavigation} />
       <SiteHeader globalNavigation={globalNavigation} />
-      <main>{children}</main>
+      {children}
     </div>
   );
 }
