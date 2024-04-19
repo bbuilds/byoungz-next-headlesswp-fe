@@ -3,14 +3,32 @@
 @import url("@fontsource/grenze/700.css");
 
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --c-white: hsl(189deg 54% 95%);
+  --c-blurred-white: hsl(189deg 54% 95% / 80%);
+  --c-black: hsl(0deg 0% 0%);
+  --c-off-black: hsl(195deg 7% 11%);
+  --c-blurred-off-black: hsl(195deg 7% 11% / 80%);
+  --c-burnt-orange: hsl(30deg 93% 60%);
+  --c-teal: hsl(179deg 46% 60%);
+  --c-swamp-green: hsl(60deg 50% 60%);
+  --c-verdun-green: hsl(60deg 50% 21%);
+  --c-foam-green: hsl(176deg 37% 83%);
+  --c-grey: hsl(210deg 16% 76%);
+  --c-grey-100: hsl(210deg 40% 98%);
+  --c-grey-200: hsl(206deg 33% 96%);
+  --c-grey-300: hsl(208deg 21% 88%);
+  --c-grey-500: hsl(192deg 8% 12%);
+  --c-grey-600: hsl(207deg 12% 43%);
+  --c-grey-700: hsl(258deg 19% 14%);
 }
+
+@tailwind components;
+@tailwind utilities;
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -21,11 +39,62 @@
 }
 
 body {
-  @apply dark:bg-offBlack bg-white;
+  @apply bg-white dark:bg-offBlack;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.nav-icon {
+  width: 30px;
+  height: 30px;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+}
+
+.nav-icon span {
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.nav-icon span:nth-child(1) {
+  top: 0;
+}
+
+.nav-icon span:nth-child(2),
+.nav-icon span:nth-child(3) {
+  top: 8px;
+}
+
+.nav-icon span:nth-child(4) {
+  top: 16px;
+}
+
+.nav-icon.open span:nth-child(1) {
+  top: 8px;
+  width: 0%;
+  left: 50%;
+}
+
+.nav-icon.open span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.nav-icon.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.nav-icon.open span:nth-child(4) {
+  top: 8px;
+  width: 0%;
+  left: 50%;
 }

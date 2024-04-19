@@ -23,7 +23,7 @@ export function SearchForm({ text }: SearchFormProps) {
         <input
           type="search"
           id="default-search"
-          className="bg-transparent text-sm"
+          className="bg-transparent px-2 text-sm"
           placeholder="Search Blog"
           required={true}
           value={searchVal}

@@ -3,6 +3,7 @@ import type { Config } from "tailwindcss";
 const colors = {
   white: "#EBF7F9", //white text and bg
   offBlack: "#1A1D1E", //black text and bg
+  blurredBlack: "var(--c-blurred-off-black)", //black text and bg
   black: "#000000",
   burntOrange: "#F89938",
   teal: "#69C8C7",
