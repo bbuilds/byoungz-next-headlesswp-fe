@@ -3,6 +3,7 @@ const { pascalCase, pathCase, snakeCase } = require("change-case");
 const componentGenerator = require("./generators/component/index");
 const pageGenerator = require("./generators/page/index");
 const utilGenerator = require("./generators/util/index");
+const queryGenerator = require("./generators/query/index");
 
 // preserve square brackets, which are valid in next.js page routes
 const nextPathCase = (txt) => {
@@ -52,4 +53,5 @@ module.exports = function (plop) {
   plop.setGenerator("component", componentGenerator);
   plop.setGenerator("page", pageGenerator);
   plop.setGenerator("util", utilGenerator);
+  plop.setGenerator("query", queryGenerator);
 };
