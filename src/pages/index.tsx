@@ -1,13 +1,14 @@
 import { GetStaticProps } from "next";
-import getMenuBySlug from "@/src/lib/queries/getMenuBySlug";
-import type { Menu } from "@/src/lib/types";
+import { getMenuBySlug, getHomepageEntry } from "@/src/lib/queries";
+import type { Menu, Page } from "@/src/lib/types";
 import { Layout } from "@/src/components";
 
 interface HomeProps {
   globalNavigation: Menu;
+  entry: Page;
 }
 
-export default function Home({ globalNavigation }: HomeProps) {
+export default function Home({ globalNavigation, entry }: HomeProps) {
   return (
     <Layout globalNavigation={globalNavigation}>
       <main
@@ -19,9 +20,10 @@ export default function Home({ globalNavigation }: HomeProps) {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const globalNavigation = await getMenuBySlug("main-nav");
+  const entry = await getHomepageEntry();
 
   return {
-    props: { globalNavigation },
+    props: { globalNavigation, entry },
     revalidate: 10,
   };
 };

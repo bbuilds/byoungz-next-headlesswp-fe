@@ -12,8 +12,6 @@ export type SiteHeaderProps = {
 export function SiteHeader({ globalNavigation }: SiteHeaderProps) {
   const menuItems = globalNavigation.menuItems?.edges;
 
-  console.log("menuItems", menuItems);
-
   return (
     <header
       id="site-header"

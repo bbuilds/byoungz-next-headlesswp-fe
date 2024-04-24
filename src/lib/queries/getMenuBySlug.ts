@@ -4,7 +4,7 @@ import { Menu } from "@/src/lib/types";
 /**
  * Fetch a menu by slug.
  */
-export default async function getMenuBySlug(slug: string) {
+export async function getMenuBySlug(slug: string) {
   const query = `
     query GetMenuBySlug($slug: ID = "URI") {
       menu(id: $slug, idType: SLUG) {
