@@ -6,3 +6,4 @@ export * from "./ColorModeToggle";
 export * from "./MobileNavigation";
 export * from "./HomePageFeaturedPosts";
 export * from "./SmartLink";
+export * from "./CardArticleFeatured";

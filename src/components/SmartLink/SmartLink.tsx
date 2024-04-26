@@ -35,7 +35,11 @@ export function SmartLink({
       {children}
     </a>
   ) : (
-    <Link href={href} onClick={handleOnPress}>
+    <Link
+      href={href}
+      onClick={handleOnPress}
+      className={classNames ? classNames : undefined}
+    >
       {children}
     </Link>
   );
