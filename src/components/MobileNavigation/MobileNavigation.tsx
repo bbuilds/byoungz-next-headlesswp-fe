@@ -10,7 +10,7 @@ export type MobileNavigationProps = {
 export function MobileNavigation({ globalNavigation }: MobileNavigationProps) {
   const menuItems = globalNavigation.menuItems?.edges;
   const [isOpen, setIsOpen] = React.useState(false);
-  console.log("globalNavigation", globalNavigation);
+
   return (
     <div
       id="mobile-navigation"

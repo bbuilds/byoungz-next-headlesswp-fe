@@ -48,6 +48,17 @@ body {
   }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-grenze font-bold;
+}
+
+/**  Custom Navigation */
+
 .nav-icon {
   width: 30px;
   height: 30px;
@@ -97,4 +108,12 @@ body {
   top: 8px;
   width: 0%;
   left: 50%;
+}
+
+/** Acessibility Hack **/
+.link-guard::before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  z-index: 1;
 }

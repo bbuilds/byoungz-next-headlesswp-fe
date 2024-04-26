@@ -4,7 +4,7 @@ import { Page } from "@/src/lib/types";
 /**
  * Fetch a page by slug.
  */
-export default async function getPageBySlug(slug: string) {
+export async function getPageBySlug(slug: string) {
   const query = `
     query GetPageBySlug($slug: ID = "URI") {
       page(idType: URI, id: $slug) {
