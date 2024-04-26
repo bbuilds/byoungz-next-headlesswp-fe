@@ -111,12 +111,9 @@ h6 {
 }
 
 /** Acessibility Hack **/
-.link-guard:before {
+.link-guard::before {
   position: absolute;
   content: "";
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1;
 }

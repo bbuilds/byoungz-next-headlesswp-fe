@@ -10,8 +10,8 @@ export async function getHomepageEntry() {
         homeFeaturedPost {
           ... on Post {
             title
-            modified
             date
+            uri
             categories {
               nodes {
                 name
@@ -27,6 +27,7 @@ export async function getHomepageEntry() {
                 }
               }
             }
+            modified
           }
         }
         homeIgTitle
@@ -36,6 +37,7 @@ export async function getHomepageEntry() {
             title
             modified
             date
+            uri
             featuredImage {
               node {
                 altText
@@ -51,30 +53,24 @@ export async function getHomepageEntry() {
                 name
               }
             }
-            seo {
-              title
-              metaDesc
-              focuskw
-              metaKeywords
-              metaRobotsNoindex
-              metaRobotsNofollow
-              opengraphTitle
-              opengraphDescription
-              canonical
-              schema {
-                raw
-              }
-              opengraphImage {
-                altText
-                sourceUrl
-                mediaDetails {
-                  height
-                  width
-                }
-              }
-            }
           }
         }
+      }
+      title(format: RAW)
+      seo {
+        focuskw
+        metaDesc
+        metaKeywords
+        opengraphImage {
+          mediaItemUrl
+        }
+        canonical
+        opengraphTitle
+        opengraphUrl
+        schema {
+          raw
+        }
+        title
       }
     }
   }
