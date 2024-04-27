@@ -1,20 +1,22 @@
 import * as React from "react";
-import type { Menu } from "@/src/lib/types";
+import type { SiteGlobals } from "@/src/lib/types";
 import { SiteHeader, MobileNavigation } from "@/src/components";
 
 export type LayoutProps = {
-  globalNavigation: Menu;
   children: React.ReactNode;
+  siteGlobals: SiteGlobals;
 };
 
-export function Layout({ globalNavigation, children }: LayoutProps) {
+export function Layout({ children, siteGlobals }: LayoutProps) {
+  const globalMainNavigation = siteGlobals.globalMainNavigation;
+
   return (
     <div
       data-component="Layout"
       className="flex min-h-screen flex-col antialiased"
     >
-      <MobileNavigation globalNavigation={globalNavigation} />
-      <SiteHeader globalNavigation={globalNavigation} />
+      <MobileNavigation globalNavigation={globalMainNavigation} />
+      <SiteHeader globalNavigation={globalMainNavigation} />
       {children}
     </div>
   );

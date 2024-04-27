@@ -1,19 +1,19 @@
 import { GetStaticProps } from "next";
-import { getMenuBySlug, getHomepageEntry } from "@/src/lib/queries";
-import type { Menu, Page, Post } from "@/src/lib/types";
+import { getHomepageEntry, getGlobals } from "@/src/lib/queries";
+import type { Page, Post, SiteGlobals } from "@/src/lib/types";
 import { Layout, HomePageFeaturedPosts } from "@/src/components";
 
 interface HomeProps {
-  globalNavigation: Menu;
   entry: Page;
+  siteGlobals: SiteGlobals;
 }
 
-export default function Home({ globalNavigation, entry }: HomeProps) {
+export default function Home({ entry, siteGlobals }: HomeProps) {
   const featuredPost = entry.homePageTemplate?.homeFeaturedPost;
   const secondaryPosts = entry.homePageTemplate?.homeSecondaryPosts;
 
   return (
-    <Layout globalNavigation={globalNavigation}>
+    <Layout siteGlobals={siteGlobals}>
       <main
         className={`flex min-h-screen flex-col items-center justify-between font-noto-sans`}
       >
@@ -30,11 +30,11 @@ export default function Home({ globalNavigation, entry }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const globalNavigation = await getMenuBySlug("main-nav");
   const entry = await getHomepageEntry();
+  const siteGlobals = await getGlobals();
 
   return {
-    props: { globalNavigation, entry },
+    props: { entry, siteGlobals: { ...siteGlobals } },
     revalidate: 10,
   };
 };
