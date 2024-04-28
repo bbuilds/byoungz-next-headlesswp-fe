@@ -13,7 +13,7 @@ export default function Home({ entry, siteGlobals }: HomeProps) {
   const secondaryPosts = entry.homePageTemplate?.homeSecondaryPosts;
 
   return (
-    <Layout siteGlobals={siteGlobals}>
+    <Layout siteGlobals={siteGlobals} entry={entry}>
       <main
         className={`flex min-h-screen flex-col items-center justify-between font-noto-sans`}
       >
