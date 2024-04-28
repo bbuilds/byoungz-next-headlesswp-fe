@@ -7,6 +7,14 @@ export async function getHomepageEntry() {
     page(id: "112", idType: DATABASE_ID) {
       homePageTemplate {
         homeAboutContent
+        homeAboutImage {
+          altText
+          sourceUrl
+          mediaDetails {
+            height
+            width
+          }
+        }
         homeFeaturedPost {
           ... on Post {
             title

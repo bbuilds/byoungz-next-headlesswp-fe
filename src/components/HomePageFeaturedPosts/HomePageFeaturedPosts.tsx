@@ -5,8 +5,7 @@ import type {
   MediaItem,
   Category,
 } from "@/src/lib/types";
-import { SmartLink, CardArticleFeatured } from "@/src/components";
-import { formatDateLocale } from "@/src/lib/utils";
+import { CardArticleFeatured } from "@/src/components";
 
 export type HomePageFeaturedPostsProps = {
   featuredPost: Page_Homepagetemplate_HomeFeaturedPost;

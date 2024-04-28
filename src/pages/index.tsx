@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import { getHomepageEntry, getGlobals } from "@/src/lib/queries";
-import type { Page, Post, SiteGlobals } from "@/src/lib/types";
-import { Layout, HomePageFeaturedPosts } from "@/src/components";
+import type { Page, Post, SiteGlobals, MediaItem } from "@/src/lib/types";
+import { Layout, HomePageFeaturedPosts, AboutSection } from "@/src/components";
 
 interface HomeProps {
   entry: Page;
@@ -24,6 +24,10 @@ export default function Home({ entry, siteGlobals }: HomeProps) {
             secondaryPosts={secondaryPosts as Post[]}
           />
         )}
+        <AboutSection
+          text={entry.homePageTemplate?.homeAboutContent as string}
+          image={entry.homePageTemplate?.homeAboutImage as MediaItem}
+        />
       </main>
     </Layout>
   );
