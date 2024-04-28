@@ -5,13 +5,13 @@ import { axe } from "vitest-axe";
 
 describe("RichText", () => {
   test("renders a RichText component", () => {
-    const { getByText } = render(<RichText>Hello world!</RichText>);
+    const { getByText } = render(<RichText text={"testing"} />);
 
-    expect(getByText("Hello world!")).toBeTruthy();
+    expect(getByText("testing")).toBeTruthy();
   });
 
   test("is accessible", async () => {
-    const { container } = render(<RichText>Hello world!</RichText>);
+    const { container } = render(<RichText text={"testing"} />);
     expect(await axe(container)).toHaveNoViolations();
   });
 });
