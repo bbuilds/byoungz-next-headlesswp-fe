@@ -57,6 +57,7 @@ export async function getHomepageEntry() {
         }
       }
       title(format: RAW)
+      contentTypeName
       seo {
         focuskw
         metaDesc
