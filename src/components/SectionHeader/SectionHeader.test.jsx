@@ -5,13 +5,13 @@ import { axe } from "vitest-axe";
 
 describe("SectionHeader", () => {
   test("renders a SectionHeader component", () => {
-    const { getByText } = render(<SectionHeader>Hello world!</SectionHeader>);
+    const { getByText } = render(<SectionHeader text={"Hello world!"} />);
 
     expect(getByText("Hello world!")).toBeTruthy();
   });
 
   test("is accessible", async () => {
-    const { container } = render(<SectionHeader>Hello world!</SectionHeader>);
+    const { container } = render(<SectionHeader text={"Hello world!"} />);
     expect(await axe(container)).toHaveNoViolations();
   });
 });

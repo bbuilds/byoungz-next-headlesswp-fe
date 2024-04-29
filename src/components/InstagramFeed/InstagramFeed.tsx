@@ -41,15 +41,18 @@ export function InstagramFeed({ title, igPosts }: InstagramFeedProps) {
                 />
               )}
               {post.media_type === "VIDEO" && (
-                <video
-                  className="w-full object-cover"
-                  muted
-                  width={488}
-                  height={488}
-                >
-                  <source src={post.media_url} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <>
+                  <video
+                    className="w-full object-cover"
+                    muted
+                    width={488}
+                    height={488}
+                  >
+                    <source src={post.media_url} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <span className="sr-only">{post.caption}</span>
+                </>
               )}
             </SmartLink>
           );
