@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: process.env.NEXT_PUBLIC_HOSTNAME,
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "*.cdninstagram.com",
+        port: "",
+      },
     ],
   },
   webpack(config) {

@@ -11,7 +11,7 @@ export type AboutSectionProps = {
 
 export function AboutSection({ text, image }: AboutSectionProps) {
   return (
-    <section className="py-12 md:py-20" data-component="AboutSection">
+    <section data-component="AboutSection">
       <h2 className="sr-only">BYOUNGZ About Section</h2>
       <div className="mx-auto flex w-full max-w-5xl flex-wrap md:items-center">
         <div className="w-full px-8 md:w-1/2">
