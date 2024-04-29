@@ -10,3 +10,11 @@ export type SiteGlobals = {
   globalGeneralSettings: GeneralSettings;
   globalSeo: SeoConfig;
 };
+
+export type IgPost = {
+  id: string;
+  media_url: string;
+  media_type: string;
+  permalink: string;
+  caption: string;
+};

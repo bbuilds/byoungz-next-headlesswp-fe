@@ -10,3 +10,5 @@ export * from "./CardArticleFeatured";
 export * from "./Meta";
 export * from "./AboutSection";
 export * from "./RichText";
+export * from "./SectionHeader";
+export * from "./InstagramFeed";
