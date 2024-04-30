@@ -12,4 +12,5 @@ export * from "./AboutSection";
 export * from "./RichText";
 export * from "./SectionHeader";
 export * from "./InstagramFeed";
+export * from "./PostList";
 export * from "./CardArticle";
