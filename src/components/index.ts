@@ -12,3 +12,4 @@ export * from "./AboutSection";
 export * from "./RichText";
 export * from "./SectionHeader";
 export * from "./InstagramFeed";
+export * from "./CardArticle";
