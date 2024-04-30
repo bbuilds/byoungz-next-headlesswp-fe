@@ -1,5 +1,5 @@
 import { fetchGraphQL } from "@/src/lib/api";
-import { Page } from "@/src/lib/types";
+import { HomePageEntry } from "@/src/lib/types";
 
 export async function getHomepageEntry() {
   const query = `
@@ -82,10 +82,35 @@ export async function getHomepageEntry() {
         title
       }
     }
+    posts(
+      where: {orderby: {field: DATE, order: DESC}, status: PUBLISH}
+      first: 3
+    ) {
+      nodes {
+        date
+        excerpt
+        featuredImage {
+          node {
+            altText
+            sourceUrl
+            mediaDetails {
+              width
+              height
+            }
+          }
+        }
+        id
+        uri
+        title
+      }
+    }
   }
   `;
 
   const response = await fetchGraphQL(query);
 
-  return response.data.page as Page;
+  return {
+    page: response.data.page,
+    posts: response.data.posts.nodes,
+  } as HomePageEntry;
 }
