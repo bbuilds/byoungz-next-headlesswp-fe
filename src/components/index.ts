@@ -15,3 +15,4 @@ export * from "./InstagramFeed";
 export * from "./PostList";
 export * from "./CardArticle";
 export * from "./RecentPostsSection";
+export * from "./SiteFooter";
