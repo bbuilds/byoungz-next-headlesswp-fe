@@ -15,7 +15,7 @@ const parser = (input: string) =>
             return (
               <SmartLink
                 href={domNode.attribs.href}
-                classNames={"dark:text-swampGreen"}
+                classNames={"anchor-hover"}
               >
                 {domToReact(domNode.children as Element[])}
               </SmartLink>

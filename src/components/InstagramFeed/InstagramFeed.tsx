@@ -17,7 +17,7 @@ export function InstagramFeed({ title, igPosts }: InstagramFeedProps) {
         <SectionHeader text={title} />
         <SmartLink
           href={SOCIAL_MEDIA_URLS.INSTAGRAM}
-          classNames="mr-4 flex items-center uppercase md:mr-8 md:text-2xl dark:text-swampGreen"
+          classNames="mr-4 flex items-center uppercase md:mr-8 md:text-2xl text-verdunGreen dark:text-swampGreen"
         >
           <span className="mr-2">@BYOUNGZ</span>
           <InstagramIcon className="h-4 w-auto lg:h-7" />
