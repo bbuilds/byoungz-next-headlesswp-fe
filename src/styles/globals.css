@@ -117,3 +117,36 @@ h6 {
   inset: 0;
   z-index: 1;
 }
+
+/** Anchor Hover **/
+
+.anchor-hover {
+  --bg-h: 2px;
+
+  padding-bottom: 2px;
+  font-weight: 700;
+  color: var(--c-verdun-green);
+  background: linear-gradient(
+      0deg,
+      var(--c-verdun-green),
+      var(--c-verdun-green)
+    )
+    no-repeat right bottom / 0 var(--bg-h);
+  transition: background-size 250ms;
+}
+
+.dark .anchor-hover {
+  color: var(--c-swamp-green);
+  background: linear-gradient(0deg, var(--c-swamp-green), var(--c-swamp-green))
+    no-repeat right bottom / 0 var(--bg-h);
+}
+
+.anchor-hover:where(:hover, :focus-visible) {
+  background-size: 100% var(--bg-h);
+  background-position-x: left;
+}
+
+.dark .anchor-hover:where(:hover, :focus-visible) {
+  background-size: 100% var(--bg-h);
+  background-position-x: left;
+}

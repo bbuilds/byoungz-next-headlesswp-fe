@@ -38,28 +38,33 @@ export function CardArticleFeatured({
           />
         </picture>
       )}
-      <div className="relative bg-black p-4">
+      <div className="relative bg-grey-100 p-4 dark:bg-black">
         <header>
           {categories &&
             categories.map((category) => {
               if (category.name !== "Personal") {
                 return (
-                  <span key={category.name} className="dark:text-swampGreen">
+                  <span
+                    key={category.name}
+                    className="font-bold dark:text-swampGreen"
+                  >
                     {category.name}
                   </span>
                 );
               }
               return null;
             })}
-          <span className="text-white text-sm">| {formatDateLocale(date)}</span>
+          <span className="text-offBlack text-sm dark:text-white">
+            | {formatDateLocale(date)}
+          </span>
           <SmartLink href={uri} classNames="block link-guard group">
             <h2
-              className={`transition-colors duration-300 ease-in-out text-2xl group-hover:dark:text-swampGreen md:mt-2 ${isSecondary ? "lg:text-2xl" : "lg:text-4xl"}`}
+              className={`transition-colors duration-300 ease-in-out text-2xl group-hover:text-verdunGreen group-hover:dark:text-swampGreen md:mt-2 ${isSecondary ? "lg:text-2xl" : "lg:text-4xl"}`}
             >
               {title}
             </h2>
             <span
-              className="absolute bottom-0 right-0 z-20  px-2 font-bold opacity-0 transition-opacity duration-300 ease-in-out text-3xl group-hover:opacity-100 dark:bg-swampGreen dark:text-black"
+              className="absolute bottom-0 right-0 z-20  bg-verdunGreen px-2 font-bold leading-none text-white opacity-0 transition-opacity duration-300 ease-in-out text-xl group-hover:opacity-100 dark:bg-swampGreen dark:text-black"
               aria-hidden="true"
             >
               &gt;

@@ -43,7 +43,7 @@ export function MobileNavigation({ globalNavigation }: MobileNavigationProps) {
         <button
           aria-hidden="true"
           tabIndex={-1}
-          className={`absolute inset-0 z-10 h-screen w-screen bg-blurredBlack backdrop-blur transition-opacity duration-200 ease-in-out ${isOpen ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 z-10 h-screen w-screen bg-blurredWhite backdrop-blur transition-opacity duration-200 ease-in-out dark:bg-blurredBlack ${isOpen ? "opacity-100" : "opacity-0"}`}
           onClick={() => setIsOpen(false)}
         ></button>
         <nav

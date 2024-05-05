@@ -19,7 +19,7 @@ export function CardArticle({ post }: CardArticleProps) {
     <article data-component="CardArticle" className="overflow-hidden rounded">
       <SmartLink
         href={`${post.uri}`}
-        classNames="block group relative h-full border-2 border-transparent hover:dark:border-swampGreen transition-colors duration-300"
+        classNames="block group relative h-full border-2 border-transparent hover:dark:border-swampGreen hover:border-verdunGreen transition-colors duration-300"
         aria-label={post.title}
       >
         {featuredImage && (
@@ -32,13 +32,13 @@ export function CardArticle({ post }: CardArticleProps) {
               height={featuredImage.mediaDetails?.height as number}
               className="size-full overflow-hidden object-cover object-center"
             />
-            <span className="absolute bottom-0 left-0 rounded-tr p-2 dark:bg-swampGreen dark:text-black">
+            <span className="absolute bottom-0 left-0 rounded-tr bg-grey-100 p-2 dark:bg-swampGreen dark:text-black">
               <strong className="text-xs">{date}</strong>
             </span>
           </picture>
         )}
-        <div className="relative p-4 dark:bg-black dark:text-white">
-          <h2 className="mb-2 transition-colors duration-300 ease-in-out text-xl group-hover:dark:text-swampGreen">
+        <div className="relative bg-grey-100 p-4 dark:bg-black dark:text-white">
+          <h2 className="mb-2 transition-colors duration-300 ease-in-out text-xl group-hover:text-verdunGreen group-hover:dark:text-swampGreen">
             {post.title}
           </h2>
           {parse(post.excerpt as string, {
