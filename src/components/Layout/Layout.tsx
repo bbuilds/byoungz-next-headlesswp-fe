@@ -1,6 +1,11 @@
 import * as React from "react";
 import type { SiteGlobals, Page, Post } from "@/src/lib/types";
-import { SiteHeader, MobileNavigation, Meta } from "@/src/components";
+import {
+  SiteHeader,
+  MobileNavigation,
+  Meta,
+  SiteFooter,
+} from "@/src/components";
 
 export type LayoutProps = {
   children: React.ReactNode;
@@ -20,6 +25,7 @@ export function Layout({ children, siteGlobals, entry }: LayoutProps) {
       <MobileNavigation globalNavigation={globalMainNavigation} />
       <SiteHeader globalNavigation={globalMainNavigation} />
       {children}
+      <SiteFooter />
     </div>
   );
 }

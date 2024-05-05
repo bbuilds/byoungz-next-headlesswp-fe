@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const colors = {
+  //@TODO move to CSS vars
   white: "#EBF7F9", //white text and bg
   offBlack: "#1A1D1E", //black text and bg
   blurredBlack: "var(--c-blurred-off-black)", //black text and bg
@@ -11,6 +12,7 @@ const colors = {
   verdunGreen: "#50501B", //white theme link color
   foamGreen: "#99CC99",
   transparent: "transparent",
+  hello: "rgb(28, 32, 33)",
   grey: {
     100: "#f8fafc",
     200: "#f1f5f8",
