@@ -4,8 +4,5 @@
     "titleBar.activeForeground": "#ffffff",
     "titleBar.inactiveBackground": "#50501B",
     "titleBar.inactiveForeground": "#ffffff"
-  },
-  "circleci.persistedProjectSelection": [
-    "gh/bbuilds/byoungz-next-headlesswp-fe"
-  ]
+  }
 }
