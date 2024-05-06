@@ -36,7 +36,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Open up http://localhost:3000 in your browser.
+Open up http://localhost:4444 in your browser.
 
 ## Testing
 
