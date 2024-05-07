@@ -1,4 +1,4 @@
-import { vi } from "vitest";
+import { beforeAll, vi } from "vitest";
 import "@testing-library/jest-dom/vitest";
 import * as matchers from "vitest-axe/matchers";
 import { expect } from "vitest";
@@ -17,4 +17,18 @@ Object.defineProperty(window, "matchMedia", {
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
   })),
+});
+
+beforeAll(() => {
+  vi.mock("next/router", () => {
+    return {
+      useRouter: () => ({
+        asPath: "/",
+        route: "/",
+        pathname: "/",
+        query: {},
+        isFallback: false,
+      }),
+    };
+  });
 });
