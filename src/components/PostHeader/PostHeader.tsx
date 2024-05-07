@@ -23,20 +23,24 @@ export function PostHeader({
 }: PostHeaderProps) {
   return (
     <header data-component="PostHeader">
-      <div className="container mx-auto w-full">
-        {breadcrumbs && <Breadcrumbs links={breadcrumbs} />}
-        {featuredImage && (
-          <picture className="relative flex size-full grow">
-            <div className="absolute inset-0 bg-blurredBlack opacity-10" />
-            <Image
-              src={featuredImage.sourceUrl as string}
-              alt={featuredImage.altText as string}
-              width={featuredImage.mediaDetails?.width as number}
-              height={featuredImage.mediaDetails?.height as number}
-              className="size-full overflow-hidden object-cover object-center"
-            />
-          </picture>
-        )}
+      {breadcrumbs && (
+        <div className="p-4">
+          <Breadcrumbs links={breadcrumbs} />
+        </div>
+      )}
+      {featuredImage && (
+        <picture className="relative flex size-full grow">
+          <div className="absolute inset-0 bg-blurredBlack opacity-10" />
+          <Image
+            src={featuredImage.sourceUrl as string}
+            alt={featuredImage.altText as string}
+            width={featuredImage.mediaDetails?.width as number}
+            height={featuredImage.mediaDetails?.height as number}
+            className="aspect-video size-full overflow-hidden object-cover object-center"
+          />
+        </picture>
+      )}
+      <div className="p-4">
         {categories && (
           <div className="py-1">
             {categories.map((category, i) => {
