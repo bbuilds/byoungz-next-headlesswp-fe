@@ -4,7 +4,12 @@ import {
   getGlobals,
   getAllPostsWithSlug,
 } from "@/src/lib/queries";
-import { Layout, PostHeader, RichText } from "@/src/components";
+import {
+  Layout,
+  PostHeader,
+  RichText,
+  TableOfContents,
+} from "@/src/components";
 import { SiteGlobals, Post, SeoPostTypeBreadcrumbs } from "@/src/lib/types";
 import ErrorPage from "next/error";
 import { useRouter } from "next/router";
@@ -16,6 +21,8 @@ interface SinglePostProps {
 
 export default function SinglePost({ entry, siteGlobals }: SinglePostProps) {
   const router = useRouter();
+
+  console.log("entry", entry);
 
   if (!entry || !siteGlobals) {
     return <ErrorPage statusCode={500} />;
@@ -45,7 +52,7 @@ export default function SinglePost({ entry, siteGlobals }: SinglePostProps) {
           </div>
 
           <aside className="sticky hidden md:ml-auto md:block md:shrink-0 md:basis-1/5">
-            TOC will go here
+            <TableOfContents blogContent={entry.content as string} />
           </aside>
         </div>
       </article>
