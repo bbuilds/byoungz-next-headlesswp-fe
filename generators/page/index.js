@@ -15,17 +15,6 @@ module.exports = {
   actions: [
     {
       type: "add",
-      path: "src/pages/index.ts",
-      skipIfExists: true,
-    },
-    {
-      type: "modify",
-      path: "src/pages/index.ts",
-      templateFile: "generators/page/root-index.ts.hbs",
-      pattern: /$/,
-    },
-    {
-      type: "add",
       path: "src/pages/{{nextPathCase route}}.page.tsx",
       templateFile: "generators/page/index.tsx.hbs",
     },

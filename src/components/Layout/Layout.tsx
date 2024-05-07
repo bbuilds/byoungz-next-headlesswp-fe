@@ -24,7 +24,11 @@ export function Layout({ children, siteGlobals, entry }: LayoutProps) {
       <Meta siteGlobals={siteGlobals} entry={entry} />
       <MobileNavigation globalNavigation={globalMainNavigation} />
       <SiteHeader globalNavigation={globalMainNavigation} />
-      {children}
+      <main
+        className={`flex min-h-screen flex-col items-center justify-between font-noto-sans`}
+      >
+        {children}
+      </main>
       <SiteFooter />
     </div>
   );

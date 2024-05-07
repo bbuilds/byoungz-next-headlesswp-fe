@@ -29,35 +29,31 @@ export default function Home({ entry, siteGlobals, igPosts }: HomeProps) {
 
   return (
     <Layout siteGlobals={siteGlobals} entry={page}>
-      <main
-        className={`flex min-h-screen flex-col items-center justify-between font-noto-sans`}
-      >
-        <h1 className="sr-only">BYOUNGZ Digital Nomad and Shadow Work Blog</h1>
-        {featuredPost && secondaryPosts && (
-          <HomePageFeaturedPosts
-            featuredPost={featuredPost}
-            secondaryPosts={secondaryPosts as Post[]}
+      <h1 className="sr-only">BYOUNGZ Digital Nomad and Shadow Work Blog</h1>
+      {featuredPost && secondaryPosts && (
+        <HomePageFeaturedPosts
+          featuredPost={featuredPost}
+          secondaryPosts={secondaryPosts as Post[]}
+        />
+      )}
+      <div className="flex w-full flex-col gap-y-10 py-20 lg:gap-y-20 lg:py-20">
+        <AboutSection
+          text={page.homePageTemplate?.homeAboutContent as string}
+          image={page.homePageTemplate?.homeAboutImage as MediaItem}
+        />
+        {posts && (
+          <RecentPostsSection
+            title={page.homePageTemplate?.homeRecentBlogTitle as string}
+            posts={posts}
           />
         )}
-        <div className="flex w-full flex-col gap-y-10 py-20 lg:gap-y-20 lg:py-20">
-          <AboutSection
-            text={page.homePageTemplate?.homeAboutContent as string}
-            image={page.homePageTemplate?.homeAboutImage as MediaItem}
+        {igPosts && (
+          <InstagramFeed
+            title={page.homePageTemplate?.homeIgTitle as string}
+            igPosts={igPosts}
           />
-          {posts && (
-            <RecentPostsSection
-              title={page.homePageTemplate?.homeRecentBlogTitle as string}
-              posts={posts}
-            />
-          )}
-          {igPosts && (
-            <InstagramFeed
-              title={page.homePageTemplate?.homeIgTitle as string}
-              igPosts={igPosts}
-            />
-          )}
-        </div>
-      </main>
+        )}
+      </div>
     </Layout>
   );
 }
@@ -71,6 +67,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const entry = await getHomepageEntry();
   const siteGlobals = await getGlobals();
+
+  console.log("entry", entry);
 
   return {
     props: { entry, siteGlobals: { ...siteGlobals }, igPosts: igData.data },

@@ -16,3 +16,5 @@ export * from "./PostList";
 export * from "./CardArticle";
 export * from "./RecentPostsSection";
 export * from "./SiteFooter";
+export * from "./Breadcrumbs";
+export * from "./PostHeader";

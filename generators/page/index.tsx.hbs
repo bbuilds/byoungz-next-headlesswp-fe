@@ -1,16 +1,23 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import { Button } from "@/src/components";
+import { GetStaticProps } from "next";
+import { SiteGlobals } from "@/src/lib/types";
 
-export const {{nextProperCase name}}: NextPage = () => {
+interface {{nextProperCase name}}Props {
+  siteGlobals: SiteGlobals;
+}
+
+export default function {{nextProperCase name}}() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      <Head>
-        <title>{{nextProperCase name}}</title>
-      </Head>
-      <Button>Click me</Button>
+        <p>New Page Content</p>
     </div>
-  );
-};
+    );
+  };
+} 
+export const getStaticProps: GetStaticProps = async (context) => {
+  const siteGlobals = await getGlobals();
 
-export default {{nextProperCase name}};
+  return {
+    props: { siteGlobals: { ...siteGlobals } },
+    revalidate: 10,
+  };
+};
