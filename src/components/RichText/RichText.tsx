@@ -28,7 +28,7 @@ const parser = (input: string) =>
 export function RichText({ text }: RichTextProps) {
   const ref = React.useRef(null);
   return (
-    <div ref={ref} data-component="RichText">
+    <div ref={ref} data-component="RichText" className="richtext">
       {parser(text)}
     </div>
   );

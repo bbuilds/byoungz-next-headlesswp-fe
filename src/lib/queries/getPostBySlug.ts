@@ -67,6 +67,7 @@ export async function getPostBySlug(slug: string) {
                 extraPostItems {
                     useToc
                 }
+                modified
             }
         }
     `;
