@@ -4,7 +4,12 @@ import {
   getGlobals,
   getAllPostsWithSlug,
 } from "@/src/lib/queries";
-import { Layout, PostHeader, RichText } from "@/src/components";
+import {
+  Layout,
+  PostHeader,
+  RichText,
+  TableOfContents,
+} from "@/src/components";
 import { SiteGlobals, Post, SeoPostTypeBreadcrumbs } from "@/src/lib/types";
 import ErrorPage from "next/error";
 import { useRouter } from "next/router";
@@ -25,6 +30,8 @@ export default function SinglePost({ entry, siteGlobals }: SinglePostProps) {
     return <ErrorPage statusCode={404} />;
   }
 
+  const useToc = entry.extraPostItems?.useToc;
+
   return (
     <Layout siteGlobals={siteGlobals} entry={entry}>
       <article className="w-screen py-20 lg:py-20">
@@ -43,10 +50,11 @@ export default function SinglePost({ entry, siteGlobals }: SinglePostProps) {
               <RichText text={entry.content as string} />
             </section>
           </div>
-
-          <aside className="sticky hidden md:ml-auto md:block md:shrink-0 md:basis-1/5">
-            TOC will go here
-          </aside>
+          {useToc && (
+            <aside className="sticky hidden md:ml-auto md:block md:shrink-0 md:basis-1/5">
+              <TableOfContents blogContent={entry.content as string} />
+            </aside>
+          )}
         </div>
       </article>
     </Layout>

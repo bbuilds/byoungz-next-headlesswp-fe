@@ -64,6 +64,9 @@ export async function getPostBySlug(slug: string) {
                         raw
                     }
                 }
+                extraPostItems {
+                    useToc
+                }
             }
         }
     `;

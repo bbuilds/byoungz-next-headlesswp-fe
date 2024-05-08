@@ -67,9 +67,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const entry = await getHomepageEntry();
   const siteGlobals = await getGlobals();
-
-  console.log("entry", entry);
-
   return {
     props: { entry, siteGlobals: { ...siteGlobals }, igPosts: igData.data },
     revalidate: 10,

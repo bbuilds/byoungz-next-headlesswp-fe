@@ -39,6 +39,9 @@ export async function getAllPosts(
             }
           }
         }
+        extraPostItems {
+          frontPageTitle
+        }
       }
     }
   }
