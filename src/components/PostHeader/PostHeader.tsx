@@ -1,33 +1,30 @@
 import * as React from "react";
 import Image from "next/image";
-import { Breadcrumbs, SmartLink } from "@/src/components";
+import { SmartLink } from "@/src/components";
 import { SeoPostTypeBreadcrumbs, MediaItem, Category } from "@/src/lib/types";
 import { formatDateLocale } from "@/src/lib/utils";
 
 export type PostHeaderProps = {
   title: string;
-  breadcrumbs?: SeoPostTypeBreadcrumbs[];
   featuredImage?: MediaItem;
   categories?: Category[];
   travelLocation?: string;
   travelDate?: string;
+  modifiedDate?: string;
 };
 
 export function PostHeader({
-  breadcrumbs,
   title,
   featuredImage,
   categories,
   travelLocation,
   travelDate,
+  modifiedDate,
 }: PostHeaderProps) {
+  const isModified = travelDate !== modifiedDate;
+
   return (
     <header data-component="PostHeader">
-      {breadcrumbs && (
-        <div className="p-4">
-          <Breadcrumbs links={breadcrumbs} />
-        </div>
-      )}
       {featuredImage && (
         <picture className="relative flex size-full grow">
           <div className="absolute inset-0 bg-blurredBlack opacity-10" />
@@ -47,7 +44,7 @@ export function PostHeader({
               return (
                 <SmartLink
                   key={category.name}
-                  classNames="text-xs dark:text-swampGreen text-verdunGreen"
+                  classNames="text-sm dark:text-swampGreen text-verdunGreen"
                   href={`/category/${category.slug}`}
                 >
                   {category.name}
@@ -57,15 +54,20 @@ export function PostHeader({
             })}
           </div>
         )}
-        <h1>{title}</h1>
-        <p>
+        <h1 id="post-top" className="mb-3 scroll-m-20 text-4xl">
+          {title}
+        </h1>
+        <p className="text-sm">
           {travelLocation && <span>{`Roaming ${travelLocation} on `}</span>}
           {travelDate && (
-            <time className="text-sm" dateTime={travelDate}>
-              {formatDateLocale(travelDate)}
-            </time>
+            <time dateTime={travelDate}>{formatDateLocale(travelDate)}</time>
           )}
         </p>
+        {isModified && (
+          <p className="font-bold text-sm">
+            {` (last updated ${formatDateLocale(modifiedDate as string)})`}
+          </p>
+        )}
       </div>
     </header>
   );

@@ -150,3 +150,83 @@ h6 {
   background-size: 100% var(--bg-h);
   background-position-x: left;
 }
+
+/*** Tyography / Richtext styles - I'm too lazy to write a bunch of parsing options or weird TW classes ***/
+
+.richtext {
+  @apply text-base;
+}
+
+.richtext .wp-block-heading {
+  @apply scroll-m-16;
+}
+
+.richtext p,
+.richtext ol,
+.richtext ul,
+.richtext li {
+  @apply mb-4;
+}
+
+.richtext img {
+  @apply my-6;
+}
+
+.richtext h2,
+.richtext h3,
+.richtext h4,
+.richtext h5,
+.richtext h6 {
+  @apply my-6 font-bold;
+}
+
+.richtext h2 {
+  @apply text-3xl;
+}
+
+.richtext h3 {
+  @apply text-2xl;
+}
+
+.richtext h4 {
+  @apply text-xl;
+}
+
+.richtext h5 {
+  @apply text-lg;
+}
+
+.richtext h6 {
+  @apply text-base;
+}
+
+.richtext ul,
+.richtext ol {
+  @apply pl-6;
+}
+
+.richtext ol {
+  @apply list-decimal;
+}
+
+.wp-block-quote {
+  background:
+    linear-gradient(to right, #f89938 3px, transparent 2px) 0 100%,
+    linear-gradient(to left, #f89938 3px, transparent 2px) 100% 0,
+    linear-gradient(to bottom, #f89938 3px, transparent 2px) 100% 0,
+    linear-gradient(to top, #f89938 3px, transparent 2px) 0 100%;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+
+  @apply my-6 w-full p-3 text-center;
+}
+
+.dark .wp-block-quote {
+  background:
+    linear-gradient(to right, #f89938 3px, transparent 2px) 0 100%,
+    linear-gradient(to left, #f89938 3px, transparent 2px) 100% 0,
+    linear-gradient(to bottom, #f89938 3px, transparent 2px) 100% 0,
+    linear-gradient(to top, #f89938 3px, transparent 2px) 0 100%;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}

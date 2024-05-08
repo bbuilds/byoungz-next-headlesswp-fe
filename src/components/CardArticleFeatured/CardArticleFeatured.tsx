@@ -40,26 +40,29 @@ export function CardArticleFeatured({
       )}
       <div className="relative bg-grey-100 p-4 dark:bg-black">
         <header>
-          {categories &&
-            categories.map((category) => {
-              if (category.name !== "Personal") {
-                return (
-                  <span
-                    key={category.name}
-                    className="font-bold dark:text-swampGreen"
-                  >
-                    {category.name}
-                  </span>
-                );
-              }
-              return null;
-            })}
-          <span className="text-offBlack text-sm dark:text-white">
-            | {formatDateLocale(date)}
-          </span>
+          <p className="flex items-center gap-x-1">
+            {categories &&
+              categories.map((category) => {
+                if (category.name !== "Personal") {
+                  return (
+                    <span
+                      key={category.name}
+                      className="font-bold dark:text-swampGreen"
+                    >
+                      {category.name}
+                    </span>
+                  );
+                }
+                return null;
+              })}
+            <span>|</span>
+            <span className="text-offBlack text-sm dark:text-white">
+              {formatDateLocale(date)}
+            </span>
+          </p>
           <SmartLink href={uri} classNames="block link-guard group">
             <h2
-              className={`transition-colors duration-300 ease-in-out text-2xl group-hover:text-verdunGreen group-hover:dark:text-swampGreen md:mt-2 ${isSecondary ? "lg:text-2xl" : "lg:text-4xl"}`}
+              className={`transition-colors duration-300 ease-in-out text-2xl group-hover:text-verdunGreen group-hover:dark:text-swampGreen md:mt-2 ${isSecondary ? "lg:text-xl" : "lg:text-3xl"}`}
             >
               {title}
             </h2>
