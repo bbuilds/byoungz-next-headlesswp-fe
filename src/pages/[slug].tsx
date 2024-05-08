@@ -22,8 +22,6 @@ interface SinglePostProps {
 export default function SinglePost({ entry, siteGlobals }: SinglePostProps) {
   const router = useRouter();
 
-  console.log("entry", entry);
-
   if (!entry || !siteGlobals) {
     return <ErrorPage statusCode={500} />;
   }
@@ -31,6 +29,8 @@ export default function SinglePost({ entry, siteGlobals }: SinglePostProps) {
   if (!router.isFallback && !entry?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+
+  const useToc = entry.extraPostItems?.useToc;
 
   return (
     <Layout siteGlobals={siteGlobals} entry={entry}>
@@ -50,10 +50,11 @@ export default function SinglePost({ entry, siteGlobals }: SinglePostProps) {
               <RichText text={entry.content as string} />
             </section>
           </div>
-
-          <aside className="sticky hidden md:ml-auto md:block md:shrink-0 md:basis-1/5">
-            <TableOfContents blogContent={entry.content as string} />
-          </aside>
+          {useToc && (
+            <aside className="sticky hidden md:ml-auto md:block md:shrink-0 md:basis-1/5">
+              <TableOfContents blogContent={entry.content as string} />
+            </aside>
+          )}
         </div>
       </article>
     </Layout>
