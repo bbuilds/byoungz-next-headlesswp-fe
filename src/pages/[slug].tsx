@@ -33,8 +33,6 @@ export default function SinglePost({ entry, siteGlobals }: SinglePostProps) {
 
   const useToc = entry.extraPostItems?.useToc;
 
-  console.log("entry", entry);
-
   const postDate = entry.date;
   const modifiedDate = entry.modified;
 
@@ -50,7 +48,7 @@ export default function SinglePost({ entry, siteGlobals }: SinglePostProps) {
                 />
               </div>
             )}
-            <div className="overflow-hidden rounded-md bg-black">
+            <div className="overflow-hidden rounded-md bg-grey-100 dark:bg-black">
               <PostHeader
                 title={entry.title as string}
                 featuredImage={entry.featuredImage?.node}
