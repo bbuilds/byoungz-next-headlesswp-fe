@@ -54,7 +54,9 @@ export function PostHeader({
             })}
           </div>
         )}
-        <h1 className="mb-3 text-4xl">{title}</h1>
+        <h1 id="post-top" className="mb-3 scroll-m-20 text-4xl">
+          {title}
+        </h1>
         <p className="text-sm">
           {travelLocation && <span>{`Roaming ${travelLocation} on `}</span>}
           {travelDate && (

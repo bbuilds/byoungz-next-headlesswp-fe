@@ -42,7 +42,7 @@ export default function SinglePost({ entry, siteGlobals }: SinglePostProps) {
     <Layout siteGlobals={siteGlobals} entry={entry}>
       <article className="w-screen py-20 lg:py-20">
         <div className="container relative mx-auto flex items-start justify-center">
-          <div className="w-full max-w-[70%] flex-1">
+          <div className="w-full flex-1 px-4 md:max-w-[70%] md:px-0">
             {entry.seo?.breadcrumbs && (
               <div className="pb-4">
                 <Breadcrumbs
@@ -66,7 +66,7 @@ export default function SinglePost({ entry, siteGlobals }: SinglePostProps) {
             </div>
           </div>
           {useToc && (
-            <aside className="sticky hidden md:ml-auto md:block md:shrink-0 md:basis-1/5">
+            <aside className="sticky top-[80px] mt-[28px] hidden md:ml-auto md:block md:max-h-[calc(-108px+100vh)] md:shrink-0 md:basis-1/4 md:overflow-auto">
               <TableOfContents blogContent={entry.content as string} />
             </aside>
           )}
