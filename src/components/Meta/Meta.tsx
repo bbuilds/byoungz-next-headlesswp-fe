@@ -9,7 +9,7 @@ export type MetaProps = {
 };
 
 export function Meta({ entry, siteGlobals }: MetaProps) {
-  const isBlogPost = entry.contentTypeName === "post";
+  const isBlogPost = entry?.contentTypeName === "post";
 
   const entrySeo = entry.seo;
   const title =

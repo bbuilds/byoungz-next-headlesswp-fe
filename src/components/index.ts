@@ -19,3 +19,4 @@ export * from "./SiteFooter";
 export * from "./Breadcrumbs";
 export * from "./PostHeader";
 export * from "./TableOfContents";
+export * from "./PageBanner";
