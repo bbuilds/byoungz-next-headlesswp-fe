@@ -12,10 +12,6 @@ export type PageBannerProps = {
 export function PageBanner({ title, subtitle }: PageBannerProps) {
   const [init, setInit] = React.useState(false);
 
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
-  };
-
   React.useEffect(() => {
     initParticlesEngine(async (engine) => {
       // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
@@ -43,7 +39,6 @@ export function PageBanner({ title, subtitle }: PageBannerProps) {
       {init && (
         <Particles
           id="tsparticles"
-          particlesLoaded={particlesLoaded}
           options={options}
           className="absolute inset-0"
         />
@@ -51,7 +46,7 @@ export function PageBanner({ title, subtitle }: PageBannerProps) {
       <header className="container relative mx-auto px-10 text-white">
         <div className="p-4">
           <hr className="mx-0 mb-4 w-24 border-t-2 border-dashed border-white" />
-          <h1 className="bg-black-gradient inline uppercase text-xl md:text-3xl">
+          <h1 className="bg-black-gradient inline uppercase text-xl md:text-2xl">
             {title}
           </h1>
           {subtitle && (

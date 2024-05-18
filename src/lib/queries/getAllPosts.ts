@@ -15,7 +15,7 @@ export async function getAllPosts(
       nodes {
         id
         title
-        slug
+        uri
         date
         modified
         excerpt
