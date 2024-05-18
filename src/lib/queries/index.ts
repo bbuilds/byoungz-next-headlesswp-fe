@@ -5,3 +5,5 @@ export * from "./getGlobals";
 export * from "./getAllPosts";
 export * from "./getPostBySlug";
 export * from "./getAllPostsWithSlug";
+export * from "./getAllCategories";
+export * from "./getCategoryBySlug";

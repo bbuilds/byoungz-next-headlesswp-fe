@@ -2,9 +2,9 @@ import { fetchGraphQL } from "@/src/lib/api";
 import { Post } from "@/src/lib/types";
 
 export async function getAllPosts(
-  categorySlug: string,
-  postAmount: number,
-  tagSlugIn: string[],
+  categorySlug?: string,
+  postAmount?: number,
+  tagSlugIn?: string[],
 ) {
   const query = `
   query GetPosts($categorySlug: String, $postAmount: Int, $tagSlugIn: [String]) {
