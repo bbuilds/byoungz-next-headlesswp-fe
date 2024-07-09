@@ -6,18 +6,18 @@ import {
   getCategoryBySlug,
 } from "@/src/lib/queries";
 import { Layout, PageBanner, PostList } from "@/src/components";
-import { SiteGlobals, Post, Category, Page } from "@/src/lib/types";
+import { SiteGlobals, Category, Page, PostConnection } from "@/src/lib/types";
 import ErrorPage from "next/error";
 
 interface SinglePostProps {
   entry: Category;
-  posts: Post[];
+  postsData: PostConnection;
   siteGlobals: SiteGlobals;
 }
 
 export default function SingleCategory({
   entry,
-  posts,
+  postsData,
   siteGlobals,
 }: SinglePostProps) {
   if (!entry || !siteGlobals) {
@@ -28,27 +28,38 @@ export default function SingleCategory({
     <Layout siteGlobals={siteGlobals} entry={entry as Page}>
       <PageBanner title={`Posts categorized in: ${entry.name}`} />
       <section className="container mx-auto py-10 lg:py-20">
-        <PostList posts={posts} displayAmount={9} />
+        <PostList
+          posts={postsData.nodes}
+          initialPageInfo={postsData.pageInfo}
+          displayAmount={9}
+          slug={entry.slug as string}
+        />
       </section>
     </Layout>
   );
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { params } = context;
-
-  if (!params) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  if (!params?.slug) {
     return { notFound: true };
   }
 
-  const { slug } = params;
+  const [siteGlobals, postsData, entry] = await Promise.all([
+    getGlobals(),
+    getAllPosts(params.slug as string, 9),
+    getCategoryBySlug(params.slug as string),
+  ]);
 
-  const siteGlobals = await getGlobals();
-  const posts = await getAllPosts(slug as string);
-  const entry = await getCategoryBySlug(slug as string);
+  if (!entry) {
+    return { notFound: true };
+  }
 
   return {
-    props: { entry, siteGlobals: { ...siteGlobals }, posts },
+    props: {
+      entry,
+      siteGlobals,
+      postsData,
+    },
     revalidate: 10,
   };
 };
