@@ -5,13 +5,13 @@ import { axe } from "vitest-axe";
 
 describe("PageBanner", () => {
   test("renders a PageBanner component", () => {
-    const { getByText } = render(<PageBanner>Hello world!</PageBanner>);
+    const { getByText } = render(<PageBanner title="Hello world!" />);
 
     expect(getByText("Hello world!")).toBeTruthy();
   });
 
   test("is accessible", async () => {
-    const { container } = render(<PageBanner>Hello world!</PageBanner>);
+    const { container } = render(<PageBanner title="Hello world!" />);
     expect(await axe(container)).toHaveNoViolations();
   });
 });
