@@ -4,7 +4,7 @@ import { PostHeader } from "@/src/components";
 import { axe } from "vitest-axe";
 
 const data = {
-  title: "Hello world!",
+  title: "Dope Swimming Spots in Puerto Rico",
   breadcrumbs: [
     {
       text: "Home",
@@ -34,8 +34,6 @@ describe("PostHeader", () => {
         categories={data.categories}
       />,
     );
-
-    expect(getByText("Hello world!")).toBeTruthy();
     expect(getByText("Dope Swimming Spots in Puerto Rico")).toBeTruthy();
   });
 

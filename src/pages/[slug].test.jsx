@@ -154,9 +154,10 @@ const siteGlobals = {
 
 describe("Single Post Page", () => {
   test("renders a heading", () => {
-    const { getByText } = render(
+    const { getByRole } = render(
       <SinglePost entry={entry} siteGlobals={siteGlobals} />,
     );
-    expect(getByText("Dope Swimming Spots in Puerto Rico")).toBeInTheDocument();
+    const heading = getByRole("heading", { level: 1 });
+    expect(heading).toHaveTextContent("Dope Swimming Spots in Puerto Rico");
   });
 });

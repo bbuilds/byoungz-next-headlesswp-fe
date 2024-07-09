@@ -160,6 +160,38 @@ h6 {
   background-position-x: left;
 }
 
+/** Decorated Buttons **/
+
+.decor-link {
+  position: relative;
+  transition:
+    all 0.15s,
+    all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .decor-link:hover {
+  color: var(--c-swamp-green);
+}
+
+.decor-link::after {
+  --tw-bg-opacity: 1;
+
+  background-color: rgb(202 208 100 / var(--tw-bg-opacity));
+  bottom: -5px;
+  content: " ";
+  height: 0.1875rem;
+  left: 0;
+  position: absolute;
+  width: 2rem;
+  transition:
+    all 0.15s,
+    all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.decor-link:hover::after {
+  width: 100%;
+}
+
 /*** Tyography / Richtext styles - I'm too lazy to write a bunch of parsing options or weird TW classes ***/
 
 .richtext {

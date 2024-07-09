@@ -47,7 +47,7 @@ export default function Home({ entry, siteGlobals, igPosts }: HomeProps) {
             posts={posts}
           />
         )}
-        {igPosts && (
+        {igPosts && igPosts.length > 0 && (
           <InstagramFeed
             title={page.homePageTemplate?.homeIgTitle as string}
             igPosts={igPosts}
@@ -64,6 +64,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const igUrl = `https://graph.instagram.com/me/media?fields=${fields}&access_token=${process.env.INSTAGRAM_USER_TOKEN}`;
   //@TODO add error handling
   const igData = await fetch(igUrl).then((res) => res.json());
+
+  //@TODO make more robust error handling
+  if (igData.error) {
+    console.log('igData error', igData.error);
+    igData.data = [];
+  }
 
   const entry = await getHomepageEntry();
   const siteGlobals = await getGlobals();
