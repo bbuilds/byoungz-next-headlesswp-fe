@@ -13,6 +13,7 @@ export async function getCategoryBySlug(slug: string) {
             raw
           }
         }
+        slug
       }
     }
   `;
