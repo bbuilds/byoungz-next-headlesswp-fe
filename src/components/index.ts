@@ -20,3 +20,4 @@ export * from "./Breadcrumbs";
 export * from "./PostHeader";
 export * from "./TableOfContents";
 export * from "./PageBanner";
+export * from "./SearchBox";
