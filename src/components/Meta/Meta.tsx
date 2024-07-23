@@ -52,6 +52,7 @@ export function Meta({ entry, siteGlobals }: MetaProps) {
         <meta property="og:description" content={metaDescription} />
         <meta property="og:url" content={entrySeo?.opengraphUrl as string} />
         <meta property="og:image" content={ogImage} />
+        {/** @TODO fix canonical */}
         <link rel="canonical" href={entrySeo?.canonical as string} />
         <meta name="robots" content={robots} />
       </Head>

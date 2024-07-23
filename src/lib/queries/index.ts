@@ -7,3 +7,5 @@ export * from "./getPostBySlug";
 export * from "./getAllPostsWithSlug";
 export * from "./getAllCategories";
 export * from "./getCategoryBySlug";
+export * from "./getAllPostsEntry";
+export * from "./getPostsBySearch";
