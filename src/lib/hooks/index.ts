@@ -1,0 +1,1 @@
+export { usePostList } from "./usePostList";
