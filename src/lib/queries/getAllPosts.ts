@@ -14,40 +14,43 @@ export async function getAllPosts(
         first: $postAmount
         after: $after
       ) {
+        edges {
+          node {
+            id
+            title
+            uri
+            date
+            modified
+            excerpt
+            categories {
+              nodes {
+                name
+              }
+            }
+            tags {
+              nodes {
+                name
+              }
+            }
+            featuredImage {
+              node {
+                altText
+                sourceUrl
+                mediaDetails {
+                  width
+                  height
+                }
+              }
+            }
+            extraPostItems {
+              frontPageTitle
+            }
+          }
+          cursor
+        }
         pageInfo {
           hasNextPage
           endCursor
-        }
-        nodes {
-          id
-          title
-          uri
-          date
-          modified
-          excerpt
-          categories {
-            nodes {
-              name
-            }
-          }
-          tags {
-            nodes {
-              name
-            }
-          }
-          featuredImage {
-            node {
-              altText
-              sourceUrl
-              mediaDetails {
-                width
-                height
-              }
-            }
-          }
-          extraPostItems {
-            frontPageTitle
-          }
         }
       }
     }

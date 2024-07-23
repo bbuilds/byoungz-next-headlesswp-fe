@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { Post, PostConnectionPageInfo } from "@/src/lib/types";
 import { CardArticle } from "@/src/components/CardArticle/CardArticle";
-import { getAllPosts } from "@/src/lib/queries";
+import { usePostList } from "@/src/lib/hooks";
 
 export type PostListProps = {
   posts: Post[];
@@ -9,6 +9,8 @@ export type PostListProps = {
   displayAmount?: 3 | 6 | 9;
   useLoadMore?: boolean;
   slug?: string;
+  isSearching?: boolean;
+  searchQuery?: string;
 };
 
 export function PostList({
@@ -17,32 +19,17 @@ export function PostList({
   displayAmount = 3,
   useLoadMore = true,
   slug,
+  isSearching,
+  searchQuery,
 }: PostListProps) {
-  const [list, setList] = React.useState<Post[]>(posts.slice(0, displayAmount));
-  const [endCursor, setEndCursor] = React.useState<string>(
-    initialPageInfo?.endCursor || "",
+  const { list, hasMore, handleLoadMore } = usePostList(
+    posts,
+    initialPageInfo,
+    displayAmount,
+    slug,
+    isSearching,
+    searchQuery,
   );
-  const [hasMore, setHasMore] = React.useState<boolean>(
-    initialPageInfo?.hasNextPage || false,
-  );
-  const [loading, setLoading] = React.useState<boolean>(false);
-
-  React.useEffect(() => {
-    const fetchPosts = async () => {
-      if (loading && hasMore) {
-        const res = await getAllPosts(slug, displayAmount, endCursor);
-        setList((prevList) => [...prevList, ...res.nodes]);
-        setHasMore(res.pageInfo.hasNextPage);
-        setEndCursor(res.pageInfo.endCursor || "");
-        setLoading(false);
-      }
-    };
-    fetchPosts();
-  }, [loading, hasMore, slug, displayAmount, endCursor]);
-
-  const handleLoadMore = React.useCallback(() => {
-    setLoading(true);
-  }, []);
 
   return (
     <div data-component="PostList">
