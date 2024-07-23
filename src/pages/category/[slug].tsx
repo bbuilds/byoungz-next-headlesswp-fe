@@ -29,7 +29,7 @@ export default function SingleCategory({
       <PageBanner title={`Posts categorized in: ${entry.name}`} />
       <section className="container mx-auto py-10 lg:py-20">
         <PostList
-          posts={postsData.nodes}
+          posts={postsData.edges.map((edge) => edge.node)}
           initialPageInfo={postsData.pageInfo}
           displayAmount={9}
           slug={entry.slug as string}

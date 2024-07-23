@@ -1,19 +1,14 @@
 import { fetchGraphQL } from "@/src/lib/api";
-import type { PostConnection } from "@/src/lib/types";
+import { PostConnection } from "@/src/lib/types";
 
-export async function getAllPosts(
-  categorySlug?: string,
+export async function getPostsBySearch(
+  searchQuery?: string,
   postAmount?: number,
   after?: string,
-  tagSlugIn?: string[],
 ): Promise<PostConnection> {
   const query = `
-    query GetPosts($categorySlug: String, $postAmount: Int, $after: String, $tagSlugIn: [String]) {
-      posts(
-        where: {status: PUBLISH, categoryName: $categorySlug, orderby: {field: DATE, order: DESC}, tagSlugIn: $tagSlugIn}
-        first: $postAmount
-        after: $after
-      ) {
+    query GetSearchResults( $searchQuery: String, $postAmount: Int, $after: String) {
+      posts: posts(first: $postAmount, after: $after, where: {search: $searchQuery}) {
         edges {
           node {
             id
@@ -42,9 +37,6 @@ export async function getAllPosts(
                 }
               }
             }
-            extraPostItems {
-              frontPageTitle
-            }
           }
           cursor
         }
@@ -57,10 +49,9 @@ export async function getAllPosts(
   `;
 
   const variables = {
-    categorySlug: categorySlug,
+    searchQuery: searchQuery,
     postAmount: postAmount,
     after: after,
-    tagSlugIn: tagSlugIn,
   };
 
   const response = await fetchGraphQL(query, variables);
