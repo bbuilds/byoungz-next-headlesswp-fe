@@ -7,7 +7,7 @@ import {
   getAllPosts,
 } from "@/src/lib/queries";
 import type { SiteGlobals, Page, Post, PostConnection } from "@/src/lib/types";
-import { Layout, SearchBox, PostList } from "@/src/components";
+import { Layout, SearchBox, PostList, PageBanner } from "@/src/components";
 
 interface BlogIndexProps {
   entry: Page;
@@ -53,6 +53,7 @@ export default function BlogIndex({
 
   return (
     <Layout siteGlobals={siteGlobals} entry={entry}>
+      <PageBanner title="All Blog Posts" subtitle={searchForText} />
       <div className="container mx-auto w-full space-y-10 py-10 lg:space-y-20 lg:py-20">
         <section>
           <SearchBox
@@ -82,8 +83,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     getAllPosts("", 9),
     getAllPostsEntry(),
   ]);
-
-  console.log("postsData", postsData);
 
   return {
     props: {

@@ -50,7 +50,7 @@ export function PageBanner({ title, subtitle }: PageBannerProps) {
             {title}
           </h1>
           {subtitle && (
-            <p className="bg-black-gradient">{`Filtering for: ${subtitle}`}</p>
+            <p className="bg-black-gradient mt-2">{`Filtering for: ${subtitle}`}</p>
           )}
         </div>
       </header>
