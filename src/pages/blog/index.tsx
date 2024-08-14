@@ -26,6 +26,7 @@ export default function BlogIndex({
     postsData?.edges?.map((edge) => edge.node) ?? [],
   );
   const [pageInfo, setPageInfo] = React.useState(postsData?.pageInfo);
+  const [searchForText, setSearchForText] = React.useState("");
 
   const fetchPosts = async (searchQuery: string) => {
     setIsSearching(true);
@@ -39,6 +40,15 @@ export default function BlogIndex({
     e.preventDefault();
     if (searchQuery.length === 0) return;
     fetchPosts(searchQuery);
+    setSearchForText(searchQuery);
+  };
+
+  const resetSearch = () => {
+    setSearchQuery("");
+    setQueryResultsPosts(postsData?.edges?.map((edge) => edge.node) ?? []);
+    setPageInfo(postsData?.pageInfo);
+    setIsSearching(false);
+    setSearchForText("");
   };
 
   return (
@@ -49,6 +59,7 @@ export default function BlogIndex({
             searchQuery={searchQuery}
             handleSearchFormSubmit={handleSearchFormSubmit}
             setSearchQuery={setSearchQuery}
+            handleResetSearch={resetSearch}
           />
         </section>
         <section>
