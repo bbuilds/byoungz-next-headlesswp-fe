@@ -5,12 +5,14 @@ export type SearchBoxProps = {
   searchQuery: string;
   setSearchQuery: (value: string) => void;
   handleSearchFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  handleResetSearch: () => void;
 };
 
 export function SearchBox({
   searchQuery,
   setSearchQuery,
   handleSearchFormSubmit,
+  handleResetSearch,
 }: SearchBoxProps) {
   return (
     <div data-component="SearchBox" className="w-full">
@@ -39,6 +41,14 @@ export function SearchBox({
             >
               <span className="sr-only">Send Search</span>
               <MagnifyingGlass className="size-5" aria-hidden={true} />
+            </button>
+            {/* clear filters button */}
+            <button
+              type="button"
+              className="flex items-center p-3 text-black transition-colors duration-200 dark:text-white dark:hover:bg-black"
+              onClick={handleResetSearch}
+            >
+              <span>reset</span>
             </button>
           </div>
         </form>

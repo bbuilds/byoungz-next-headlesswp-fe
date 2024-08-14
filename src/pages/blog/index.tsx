@@ -7,7 +7,7 @@ import {
   getAllPosts,
 } from "@/src/lib/queries";
 import type { SiteGlobals, Page, Post, PostConnection } from "@/src/lib/types";
-import { Layout, SearchBox, PostList } from "@/src/components";
+import { Layout, SearchBox, PostList, PageBanner } from "@/src/components";
 
 interface BlogIndexProps {
   entry: Page;
@@ -26,6 +26,7 @@ export default function BlogIndex({
     postsData?.edges?.map((edge) => edge.node) ?? [],
   );
   const [pageInfo, setPageInfo] = React.useState(postsData?.pageInfo);
+  const [searchForText, setSearchForText] = React.useState("");
 
   const fetchPosts = async (searchQuery: string) => {
     setIsSearching(true);
@@ -39,16 +40,27 @@ export default function BlogIndex({
     e.preventDefault();
     if (searchQuery.length === 0) return;
     fetchPosts(searchQuery);
+    setSearchForText(searchQuery);
+  };
+
+  const resetSearch = () => {
+    setSearchQuery("");
+    setQueryResultsPosts(postsData?.edges?.map((edge) => edge.node) ?? []);
+    setPageInfo(postsData?.pageInfo);
+    setIsSearching(false);
+    setSearchForText("");
   };
 
   return (
     <Layout siteGlobals={siteGlobals} entry={entry}>
+      <PageBanner title="All Blog Posts" subtitle={searchForText} />
       <div className="container mx-auto w-full space-y-10 py-10 lg:space-y-20 lg:py-20">
         <section>
           <SearchBox
             searchQuery={searchQuery}
             handleSearchFormSubmit={handleSearchFormSubmit}
             setSearchQuery={setSearchQuery}
+            handleResetSearch={resetSearch}
           />
         </section>
         <section>
@@ -71,8 +83,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     getAllPosts("", 9),
     getAllPostsEntry(),
   ]);
-
-  console.log("postsData", postsData);
 
   return {
     props: {
