@@ -1,5 +1,6 @@
 import * as React from "react";
 import { GetStaticProps } from "next";
+import { useRouter } from "next/router";
 import {
   getGlobals,
   getAllPostsEntry,
@@ -20,7 +21,9 @@ export default function BlogIndex({
   siteGlobals,
   postsData,
 }: BlogIndexProps) {
-  const [searchQuery, setSearchQuery] = React.useState("");
+  const router = useRouter();
+  const initialQuery = (router.query.q as string) || "";
+  const [searchQuery, setSearchQuery] = React.useState(initialQuery);
   const [isSearching, setIsSearching] = React.useState(false);
   const [queryResultsPosts, setQueryResultsPosts] = React.useState<Post[]>(
     postsData?.edges?.map((edge) => edge.node) ?? [],
@@ -41,6 +44,10 @@ export default function BlogIndex({
     if (searchQuery.length === 0) return;
     fetchPosts(searchQuery);
     setSearchForText(searchQuery);
+    router.push({
+      pathname: router.pathname,
+      query: { q: searchQuery },
+    });
   };
 
   const resetSearch = () => {
@@ -49,7 +56,18 @@ export default function BlogIndex({
     setPageInfo(postsData?.pageInfo);
     setIsSearching(false);
     setSearchForText("");
+    router.push({
+      pathname: router.pathname,
+      query: {},
+    });
   };
+
+  React.useEffect(() => {
+    if (initialQuery) {
+      fetchPosts(initialQuery);
+      setSearchForText(initialQuery);
+    }
+  }, [initialQuery]);
 
   return (
     <Layout siteGlobals={siteGlobals} entry={entry}>
