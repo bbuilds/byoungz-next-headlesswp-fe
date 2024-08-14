@@ -5,15 +5,15 @@ export type SearchFormProps = {
   text?: string;
 };
 
-// @TODO search functionality
-
 export function SearchForm({ text }: SearchFormProps) {
   const [searchVal, setSearchVal] = React.useState("");
+
   return (
     <form
       data-component="SearchForm"
       role="search"
-      action="#"
+      action="/blog"
+      method="GET"
       className="flex h-12 items-center border-x border-grey-300 pl-3 dark:border-grey-600"
     >
       <label htmlFor="default-search" className="sr-only">
@@ -23,6 +23,7 @@ export function SearchForm({ text }: SearchFormProps) {
         <input
           type="search"
           id="default-search"
+          name="q"
           className="bg-transparent px-2 text-sm"
           placeholder="Search Blog"
           required={true}
