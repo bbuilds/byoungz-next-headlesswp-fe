@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   //@TODO make more robust error handling
   if (igData.error) {
-    console.log('igData error', igData.error);
+    // console.log("igData error", igData.error);
     igData.data = [];
   }
 
