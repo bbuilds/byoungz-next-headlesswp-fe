@@ -20,7 +20,7 @@ export default function SingleCategory({
   postsData,
   siteGlobals,
 }: SinglePostProps) {
-  if (!entry || !siteGlobals) {
+  if (!siteGlobals) {
     return <ErrorPage statusCode={500} />;
   }
 
@@ -75,6 +75,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: newPaths,
-    fallback: true,
+    fallback: false,
   };
 };

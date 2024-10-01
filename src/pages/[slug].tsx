@@ -13,7 +13,6 @@ import {
 } from "@/src/components";
 import { SiteGlobals, Post, SeoPostTypeBreadcrumbs } from "@/src/lib/types";
 import ErrorPage from "next/error";
-import { useRouter } from "next/router";
 
 interface SinglePostProps {
   entry: Post;
@@ -21,51 +20,52 @@ interface SinglePostProps {
 }
 
 export default function SinglePost({ entry, siteGlobals }: SinglePostProps) {
-  const router = useRouter();
-
-  if (!entry || !siteGlobals) {
+  if (!siteGlobals) {
     return <ErrorPage statusCode={500} />;
   }
-
-  if (!router.isFallback && !entry?.slug) {
-    return <ErrorPage statusCode={404} />;
-  }
-
-  const useToc = entry.extraPostItems?.useToc;
-
-  const postDate = entry.date;
-  const modifiedDate = entry.modified;
+  const {
+    seo,
+    title,
+    featuredImage,
+    categories,
+    travelJournal,
+    date,
+    modified,
+    content,
+    extraPostItems,
+  } = entry;
+  const useToc = extraPostItems?.useToc;
 
   return (
     <Layout siteGlobals={siteGlobals} entry={entry}>
       <article className="w-screen py-20 lg:py-20">
         <div className="container relative mx-auto flex items-start justify-center">
           <div className="w-full flex-1 px-4 md:max-w-[70%] md:px-0">
-            {entry.seo?.breadcrumbs && (
+            {seo?.breadcrumbs && (
               <div className="pb-4">
                 <Breadcrumbs
-                  links={entry.seo?.breadcrumbs as SeoPostTypeBreadcrumbs[]}
+                  links={seo.breadcrumbs as SeoPostTypeBreadcrumbs[]}
                 />
               </div>
             )}
             <div className="overflow-hidden rounded-md bg-grey-100 dark:bg-black">
               <PostHeader
-                title={entry.title as string}
-                featuredImage={entry.featuredImage?.node}
-                categories={entry.categories?.nodes}
-                travelLocation={entry.travelJournal?.location || ""}
-                travelDate={postDate as string}
-                modifiedDate={modifiedDate as string}
+                title={title as string}
+                featuredImage={featuredImage?.node}
+                categories={categories?.nodes}
+                travelLocation={travelJournal?.location || ""}
+                travelDate={date as string}
+                modifiedDate={modified as string}
               />
               <hr className="mx-4 w-24 border-t-2 border-dashed border-white" />
               <section className="px-6 py-8">
-                <RichText text={entry.content as string} />
+                <RichText text={content as string} />
               </section>
             </div>
           </div>
           {useToc && (
             <aside className="sticky top-[80px] mt-[28px] hidden md:ml-auto md:block md:max-h-[calc(-108px+100vh)] md:shrink-0 md:basis-1/4 md:overflow-auto">
-              <TableOfContents blogContent={entry.content as string} />
+              <TableOfContents blogContent={content as string} />
             </aside>
           )}
         </div>
@@ -83,11 +83,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const { slug } = params;
 
-  const siteGlobals = await getGlobals();
-  const entry = await getPostBySlug(slug as string);
+  const [shellResponse, contentResponse] = await Promise.all([
+    getGlobals(),
+    getPostBySlug(slug as string),
+  ]);
 
   return {
-    props: { entry, siteGlobals: { ...siteGlobals } },
+    props: { entry: contentResponse, siteGlobals: { ...shellResponse } },
     revalidate: 10,
   };
 };
@@ -103,6 +105,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: newPaths,
-    fallback: true,
+    fallback: false,
   };
 };
