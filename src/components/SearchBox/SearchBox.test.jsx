@@ -5,9 +5,9 @@ import { axe } from "vitest-axe";
 
 describe("SearchBox", () => {
   test("renders a SearchBox component", () => {
-    const { getByText } = render(<SearchBox>Hello world!</SearchBox>);
+    const { getByText } = render(<SearchBox />);
 
-    expect(getByText("Hello world!")).toBeTruthy();
+    expect(getByText("Search Byoungz Posts")).toBeTruthy();
   });
 
   test("is accessible", async () => {
