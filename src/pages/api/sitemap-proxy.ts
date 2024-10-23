@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import fetch from "isomorphic-unfetch";
 import { NextApiRequest, NextApiResponse } from "next";
 
