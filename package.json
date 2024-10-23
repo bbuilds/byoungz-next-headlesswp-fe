@@ -6,6 +6,9 @@
     "dev": "next dev -p 4444",
     "build": "next build",
     "start": "next start",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && wrangler pages dev",
+    "deploy": "npm run pages:build && wrangler pages deploy",
     "format": "prettier '**/*.{js,jsx,ts,tsx,md,html,css,json,yml}' --ignore-path .gitignore --cache --write",
     "fix": "npm-run-all --parallel fix:js fix:css",
     "lint": "npm-run-all --parallel lint:js lint:css",
@@ -38,6 +41,7 @@
   },
   "devDependencies": {
     "@axe-core/react": "^4.9.1",
+    "@cloudflare/next-on-pages": "^1.13.5",
     "@graphql-codegen/cli": "5.0.2",
     "@graphql-codegen/typescript": "^4.0.9",
     "@svgr/webpack": "^8.1.0",
