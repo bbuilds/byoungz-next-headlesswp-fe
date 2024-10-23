@@ -20,6 +20,18 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/(.*)sitemap.xml",
+        destination: "/api/sitemap-proxy",
+      },
+      {
+        source: "/sitemap(.*).xml",
+        destination: "/api/sitemap-proxy",
+      },
+    ];
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
