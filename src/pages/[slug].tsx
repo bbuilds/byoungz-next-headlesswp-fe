@@ -11,6 +11,7 @@ import {
   RichText,
   TableOfContents,
   SchemaMarkup,
+  ShareButtons,
 } from "@/src/components";
 import { SiteGlobals, Post, SeoPostTypeBreadcrumbs } from "@/src/lib/types";
 import ErrorPage from "next/error";
@@ -62,6 +63,19 @@ export default function SinglePost({ entry, siteGlobals }: SinglePostProps) {
               <section className="px-6 py-8">
                 <RichText text={content as string} />
               </section>
+
+              {seo &&
+                seo?.opengraphDescription &&
+                seo?.opengraphTitle &&
+                seo.title && (
+                  <footer className="border-t border-solid border-t-grey-300 px-6 py-8 dark:border-t-grey-600">
+                    <ShareButtons
+                      url={`${process.env.NEXT_PUBLIC_FRONTEND_DOMAIN}/${entry.slug}`}
+                      quote={seo.opengraphDescription}
+                      title={seo.title}
+                    />
+                  </footer>
+                )}
             </div>
           </div>
           {useToc && (
