@@ -13,6 +13,7 @@ import {
   AboutSection,
   InstagramFeed,
   RecentPostsSection,
+  SchemaMarkup,
 } from "@/src/components";
 
 interface HomeProps {
@@ -54,6 +55,9 @@ export default function Home({ entry, siteGlobals, igPosts }: HomeProps) {
           />
         )}
       </div>
+      {entry.page.seo?.schema?.raw && (
+        <SchemaMarkup id="homepage-schema" text={entry.page.seo.schema.raw} />
+      )}
     </Layout>
   );
 }

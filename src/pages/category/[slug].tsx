@@ -5,7 +5,7 @@ import {
   getAllPosts,
   getCategoryBySlug,
 } from "@/src/lib/queries";
-import { Layout, PageBanner, PostList } from "@/src/components";
+import { Layout, PageBanner, PostList, SchemaMarkup } from "@/src/components";
 import { SiteGlobals, Category, Page, PostConnection } from "@/src/lib/types";
 import ErrorPage from "next/error";
 
@@ -35,6 +35,9 @@ export default function SingleCategory({
           slug={entry.slug as string}
         />
       </section>
+      {entry.seo?.schema?.raw && (
+        <SchemaMarkup id="category-schema" text={entry.seo.schema.raw} />
+      )}
     </Layout>
   );
 }
