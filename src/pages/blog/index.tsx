@@ -8,7 +8,13 @@ import {
   getAllPosts,
 } from "@/src/lib/queries";
 import type { SiteGlobals, Page, Post, PostConnection } from "@/src/lib/types";
-import { Layout, SearchBox, PostList, PageBanner } from "@/src/components";
+import {
+  Layout,
+  SearchBox,
+  PostList,
+  PageBanner,
+  SchemaMarkup,
+} from "@/src/components";
 
 interface BlogIndexProps {
   entry: Page;
@@ -91,6 +97,9 @@ export default function BlogIndex({
           />
         </section>
       </div>
+      {entry.seo?.schema?.raw && (
+        <SchemaMarkup id="blog-index-schema" text={entry.seo.schema.raw} />
+      )}
     </Layout>
   );
 }

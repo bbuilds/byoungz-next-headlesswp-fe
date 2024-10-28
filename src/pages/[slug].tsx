@@ -10,6 +10,7 @@ import {
   PostHeader,
   RichText,
   TableOfContents,
+  SchemaMarkup,
 } from "@/src/components";
 import { SiteGlobals, Post, SeoPostTypeBreadcrumbs } from "@/src/lib/types";
 import ErrorPage from "next/error";
@@ -70,6 +71,9 @@ export default function SinglePost({ entry, siteGlobals }: SinglePostProps) {
           )}
         </div>
       </article>
+      {seo?.schema?.raw && (
+        <SchemaMarkup id="article-schema" text={seo?.schema?.raw} />
+      )}
     </Layout>
   );
 }
