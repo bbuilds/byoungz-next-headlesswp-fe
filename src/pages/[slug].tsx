@@ -1,9 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from "next";
-import {
-  getPostBySlug,
-  getGlobals,
-  getAllPostsWithSlug,
-} from "@/src/lib/queries";
+import { getPostBySlug, getGlobals } from "@/src/lib/queries";
 import {
   Breadcrumbs,
   Layout,
@@ -113,16 +109,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = await getAllPostsWithSlug();
-
-  const newPaths: { params: { slug: any } }[] = [];
-
-  allPosts.nodes.map((node: Post) => {
-    newPaths.push({ params: { slug: node.slug } });
-  });
-
+  const paths: never[] = [];
   return {
-    paths: newPaths,
-    fallback: false,
+    paths,
+    fallback: "blocking",
   };
 };
