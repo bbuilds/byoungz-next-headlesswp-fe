@@ -1,4 +1,5 @@
 import * as React from "react";
+import { JSX } from "react";
 import parse from "html-react-parser";
 import { SmartLink } from "@/src/components";
 
