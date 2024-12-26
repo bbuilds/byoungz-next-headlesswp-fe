@@ -4,7 +4,7 @@ import { RootQueryToPostConnection } from "@/src/lib/types";
 export async function getAllPostsWithSlug() {
   const query = `
     query getAllPostsWithSlug {
-      posts(where: {status: PUBLISH}, first: 100) {
+      posts(where: {status: PUBLISH}, first: 20) {
         nodes {
           slug
         }
