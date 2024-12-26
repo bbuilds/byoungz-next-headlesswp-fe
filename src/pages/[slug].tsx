@@ -1,3 +1,4 @@
+export const runtime = "experimental-edge";
 import { GetStaticProps, GetStaticPaths } from "next";
 import {
   getPostBySlug,
